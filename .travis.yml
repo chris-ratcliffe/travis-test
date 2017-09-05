@@ -19,3 +19,5 @@ script:
   - set -e # forces travis to fail if any of the steps fail
 
   - cat README.md
+
+  - perl newfile.pl
