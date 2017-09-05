@@ -1,0 +1,21 @@
+# this setting ensure a VM is made available as the travis build slave, rather
+# than just a container.  Also, it ensures that the build id can sudo to 
+# root as needed.
+sudo: required
+
+# ant based build
+language: perl
+
+services:
+  # ensure the docker service is available
+  - docker
+
+install:
+  # install any required perl dependencies via cpanm as defined in the cpanfile 
+  # from the git repo
+  - eval cpanm -v --installdeps --notest .
+
+script:
+  - set -e # forces travis to fail if any of the steps fail
+
+  - cat README.md
